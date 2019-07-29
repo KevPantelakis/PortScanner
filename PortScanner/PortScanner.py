@@ -38,10 +38,8 @@ class ThreadedPortScanner(object):
 
     def scan(self):
         subprocess.call('cls', shell=True)
-
         try:
-
-            print('Scanning host: ', self.server_ip)
+            print('Scanning host: {}'.format(self.server_ip))
 
             # Split range equally
             max_workers = math.ceil((len(self.port_range))/5)
@@ -127,7 +125,7 @@ class PortScanner(object):
         subprocess.call('cls', shell=True)
 
         try:
-            print('Scanning host: ', self.server_ip)
+            print('Scanning host: '.format(self.server_ip))
             start = datetime.now()
             results = self.start_scan(self.port_range)
             # start threads for each split range
