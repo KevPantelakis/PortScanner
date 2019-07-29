@@ -23,11 +23,18 @@ class PortScanResponse:
 class ThreadedPortScanner(object):
 
     def __init__(self):
-        server_address = input('Host address: ')
-        self.server_ip = socket.gethostbyname(server_address)
-        self.min_port = int(input('lowest port: '))
-        self.max_port = int(input('highest port: ')) + 1
-        self.port_range = range(self.min_port, self.max_port)
+        try:
+            server_address = input('Host address: ')
+            self.server_ip = socket.gethostbyname(server_address)
+            self.min_port = int(input('lowest port: '))
+            self.max_port = int(input('highest port: ')) + 1
+            self.port_range = range(self.min_port, self.max_port)
+        except socket.gaierror:
+            print("Hostname could not be resolved")
+            sys.exit()
+        except socket.error:
+            print('Could not connect to server')
+            sys.exit()
 
     def scan(self):
         subprocess.call('cls', shell=True)
@@ -103,11 +110,18 @@ class ThreadedPortScanner(object):
 class PortScanner(object):
 
     def __init__(self):
-        server_address = 'www.google.com'  # input('Host address: ')
-        self.server_ip = socket.gethostbyname(server_address)
-        self.min_port = int(input('lowest port: '))
-        self.max_port = int(input('highest port: ')) + 1
-        self.port_range = range(self.min_port, self.max_port)
+        try:
+            server_address = input('Host address: ')
+            self.server_ip = socket.gethostbyname(server_address)
+            self.min_port = int(input('lowest port: '))
+            self.max_port = int(input('highest port: ')) + 1
+            self.port_range = range(self.min_port, self.max_port)
+        except socket.gaierror:
+            print("Hostname could not be resolved")
+            sys.exit()
+        except socket.error:
+            print('Could not connect to server')
+            sys.exit()
 
     def scan(self):
         subprocess.call('cls', shell=True)
