@@ -23,7 +23,7 @@ class PortScanResponse:
 class ThreadedPortScanner(object):
 
     def __init__(self):
-        server_address = 'www.google.com'  # input('Host address: ')
+        server_address = input('Host address: ')
         self.server_ip = socket.gethostbyname(server_address)
         self.min_port = int(input('lowest port: '))
         self.max_port = int(input('highest port: ')) + 1
